@@ -125,7 +125,7 @@ html[data-theme="dark"] .clay-landing .clay-preview,.clay-landing.clay-dark .cla
   .clay-app.clay-dark .editor-tools-nav button[class*="bg-cyan"] { box-shadow:inset 3px 3px 6px rgba(0,7,15,.28),inset -2px -2px 5px rgba(94,163,207,.09) !important; }
 }
 
-.clay-app { background:#cfe5f8 !important; color:#123653 !important; }
+.clay-app { display:flow-root; background:#cfe5f8 !important; color:#123653 !important; }
 .clay-app > header {
   margin:16px 16px 0;
   height:76px;
