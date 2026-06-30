@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="id" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:`try{var t=localStorage.getItem('birthday-studio-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}`}}/></head><body>{children}</body></html>;
+  return <html lang="id" data-theme="light" suppressHydrationWarning><head><script dangerouslySetInnerHTML={{__html:`try{var t=localStorage.getItem('birthday-studio-theme');document.documentElement.dataset.theme=t==='dark'?'dark':'light'}catch(e){document.documentElement.dataset.theme='light'}`}}/></head><body>{children}</body></html>;
 }
