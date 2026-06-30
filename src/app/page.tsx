@@ -40,7 +40,7 @@ function HeroShowcase(){
     <div className="clay-preview hero-preview relative mx-auto w-[72%] max-w-[420px]">
       <div className="relative aspect-[4/5] overflow-hidden rounded-[28px]">
         <AnimatePresence mode="wait">
-          <motion.div key={current.id} initial={{opacity:0,scale:1.08,filter:"blur(8px)"}} animate={{opacity:1,scale:1,filter:"blur(0px)"}} exit={{opacity:0,scale:.96,filter:"blur(5px)"}} transition={{duration:.6}} className="absolute inset-0 bg-cover bg-center" style={{backgroundImage:`url(${current.image})`}}/>
+          <motion.div key={current.id} initial={{opacity:0,scale:1.08,filter:"blur(8px)"}} animate={{opacity:1,scale:1,filter:"blur(0px)"}} exit={{opacity:0,scale:.96,filter:"blur(5px)"}} transition={{duration:.6}} className="absolute inset-0"><Image src={current.image!} alt={`Preview ${current.name}`} fill sizes="(max-width: 768px) 72vw, 420px" quality={72} priority={active===0} className="object-cover"/></motion.div>
         </AnimatePresence>
         <div className="hero-scan-line"/>
         <motion.div key={`copy-${active}`} initial={{opacity:0,y:-12}} animate={{opacity:1,y:0}} transition={{delay:.28}} className="absolute inset-x-[5%] top-[12%] text-center">
@@ -55,6 +55,6 @@ function HeroShowcase(){
     </div>
     <motion.div animate={{x:[0,12,0],y:[0,-7,0]}} transition={{duration:4.5,repeat:Infinity,ease:"easeInOut"}} className="hero-float-badge hero-badge-top"><MousePointer2 size={15}/><span><b>Live canvas</b><small>Drag every layer</small></span></motion.div>
     <motion.div animate={{y:[0,8,0]}} transition={{duration:3.8,repeat:Infinity,ease:"easeInOut"}} className="hero-float-badge hero-badge-bottom"><Layers3 size={16}/><span><b>{current.name}</b><small>{current.width} × {current.height} px</small></span></motion.div>
-    <div className="hero-template-switcher">{showcase.map((template,index)=><button key={template.id} onClick={()=>setActive(index)} aria-label={`Lihat ${template.name}`} className={index===active?"active":""}><span style={{backgroundImage:`url(${template.image})`}}/><i/></button>)}</div>
+    <div className="hero-template-switcher">{showcase.map((template,index)=><button key={template.id} onClick={()=>setActive(index)} aria-label={`Lihat ${template.name}`} className={index===active?"active":""}><span className="relative overflow-hidden"><Image src={template.image!} alt="" fill sizes="42px" quality={42} loading="lazy" className="object-cover"/></span><i/></button>)}</div>
   </motion.div>;
 }

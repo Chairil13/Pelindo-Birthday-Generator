@@ -65,12 +65,12 @@ export const DesignCanvas=forwardRef<HTMLDivElement,DesignCanvasProps>(({state,o
   const resizeLogo=(event:PointerEvent<HTMLButtonElement>)=>{if(!onLogoResize||!logoResizeStart.current||!event.currentTarget.hasPointerCapture(event.pointerId))return;const canvas=event.currentTarget.parentElement?.parentElement?.getBoundingClientRect();if(!canvas)return;const start=logoResizeStart.current;const x=((event.clientX-canvas.left)/canvas.width)*100,y=((event.clientY-canvas.top)/canvas.height)*100;const change=((x-start.pointerX)*start.horizontal+(y-start.pointerY)*start.vertical)/2;onLogoResize(Math.max(5,Math.min(55,start.width+change)))};
   const stopLogoResize=(event:PointerEvent<HTMLButtonElement>)=>{logoResizeStart.current=null;event.currentTarget.releasePointerCapture(event.pointerId)};
   const messageCardStyle = state.messageStyle==="gold"
-    ? {background:"linear-gradient(135deg,rgba(28,38,44,.94),rgba(8,21,34,.9))",border:"1px solid #f6c453",borderRadius:"16px",boxShadow:"0 8px 25px #0007, inset 0 0 18px #f6c45318",backdropFilter:"blur(10px)"}
+    ? {background:"linear-gradient(135deg,rgba(28,38,44,.96),rgba(8,21,34,.94))",border:"1px solid #f6c453",borderRadius:"16px",boxShadow:"0 8px 25px #0007, inset 0 0 18px #f6c45318",backdropFilter:"none"}
     : state.messageStyle==="minimal"
       ? {background:"transparent",borderTop:`1px solid ${state.accent}`,borderBottom:`1px solid ${state.accent}`,borderLeft:"none",borderRight:"none",borderRadius:"0",boxShadow:"none",backdropFilter:"none"}
       : state.messageStyle==="soft"
-        ? {background:"rgba(245,251,255,.9)",border:"2px solid rgba(255,255,255,.95)",borderRadius:"22px",boxShadow:"0 10px 25px #001b3344, inset 3px 3px 7px #ffffff",backdropFilter:"blur(8px)"}
-        : {background:state.template.tone==="light"?"rgba(255,255,255,.62)":"rgba(3,23,45,.62)",border:state.template.tone==="light"?"1px solid rgba(0,91,172,.18)":"1px solid rgba(255,255,255,.16)",borderRadius:"14px",boxShadow:"0 8px 22px #00152b33",backdropFilter:"blur(12px)"};
+        ? {background:"rgba(245,251,255,.96)",border:"2px solid rgba(255,255,255,.95)",borderRadius:"22px",boxShadow:"0 10px 25px #001b3344, inset 3px 3px 7px #ffffff",backdropFilter:"none"}
+        : {background:state.template.tone==="light"?"rgba(245,251,255,.9)":"rgba(3,23,45,.88)",border:state.template.tone==="light"?"1px solid rgba(0,91,172,.18)":"1px solid rgba(255,255,255,.16)",borderRadius:"14px",boxShadow:"0 8px 22px #00152b33, inset 0 1px 0 rgba(255,255,255,.08)",backdropFilter:"none"};
   const messageColor=state.messageStyle==="gold"?"#fff4d5":state.messageStyle==="soft"?"#06335b":state.template.tone==="light"?"#06335b":"rgba(255,255,255,.88)";
   return <div ref={ref} id="design-canvas" className="relative w-full overflow-hidden bg-[#061b33] text-white" style={{background:state.template.background,aspectRatio:`${state.template.width}/${state.template.height}`}}>
   {state.template.image&&<img src={state.template.image} alt="" className="absolute inset-0 h-full w-full" style={{objectFit:state.template.imageFit??"fill"}}/>}
